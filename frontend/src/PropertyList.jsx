@@ -7,7 +7,7 @@ import PriceRangeSlider from "./components/PriceRangeSlider";
 import Card from "./components/Card";
 import PropertyIcon from "../src/assets/property1.png";
 import PropertyCard from "./components/PropertyCard";
-import { useNavigate, useSearchParams } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 
 const cities = [{ name: "Chicago" }, { name: "Arizona" }];
 
@@ -29,7 +29,7 @@ const features = [
 const style = ["A-Frame", "Office", "Building", "Industrial", "Shop"];
 const PropertyList = () => {
   const [isPending, startTransition] = useTransition(); // 🔹 Add useTransition
-  const [propertiesStats, setPropertiesStats] = useState(null)
+  const [propertiesStats, setPropertiesStats] = useState(null);
   const [properties, setProperties] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
 
@@ -104,7 +104,7 @@ const PropertyList = () => {
 
       document.startViewTransition(() => {
         // flushSync(() => {
-          setProperties(response.data); // 🔹 Ensure state is updated before animation starts
+        setProperties(response.data); // 🔹 Ensure state is updated before animation starts
         // });
       });
     } catch (error) {
@@ -214,16 +214,16 @@ const PropertyList = () => {
         // Fetch both filtered properties and dashboard stats
         const [filteredProperties, dashboardStats] = await Promise.all([
           fetchFilteredProperties(filterData), // Your existing function
-          axiosInstance.get("/api/properties-stats") // API call for stats
+          axiosInstance.get("/api/properties-stats"), // API call for stats
         ]);
         console.log(dashboardStats.data);
-        
+
         setPropertiesStats(dashboardStats.data); // Store stats in state
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
     // fetchFilteredProperties(filterData);
   }, [searchParams]);
@@ -233,25 +233,25 @@ const PropertyList = () => {
       <div className="row">
         <Card
           name="Total Property"
-          amount={propertiesStats.totalProperties}
+          amount={propertiesStats?.totalProperties || 0}
           update="-3.27"
           imgSrc={PropertyIcon}
         />
         <Card
           name="Properties Available"
-          amount={propertiesStats.availableProperties}
+          amount={propertiesStats?.availableProperties || 0}
           update="-3.27"
           imgSrc={PropertyIcon}
         />
         <Card
           name="Properties Sold"
-          amount={propertiesStats.soldProperties}
+          amount={propertiesStats?.soldProperties || 0}
           update="-3.27"
           imgSrc={PropertyIcon}
         />
         <Card
           name="Total Income"
-          amount={propertiesStats.totalIncome.toLocaleString()}
+          amount={propertiesStats?.totalIncome.toLocaleString() || 0}
           update="-3.27"
           imgSrc={PropertyIcon}
         />
@@ -353,17 +353,19 @@ const PropertyList = () => {
           ) : (
             properties.map((property, i) => (
               // <div key={property._id} style={{ viewTransitionName: `property-${property._id}` }}>
-              <PropertyCard
-                key={property._id}
-                id={property._id}
-                name={property.property_name}
-                price={property.property_price}
-                status={property.property_status}
-                bedrooms={property.property_bedrooms}
-                bathrooms={property.property_bathrooms}
-                features={property.property_features}
-                image={property.property_image}
-              />
+              <Link to={property.property_name}>
+                <PropertyCard
+                  key={property._id}
+                  id={property._id}
+                  name={property.property_name}
+                  price={property.property_price}
+                  status={property.property_status}
+                  bedrooms={property.property_bedrooms}
+                  bathrooms={property.property_bathrooms}
+                  features={property.property_features}
+                  image={property.property_image}
+                />
+              </Link>
               // </div>
             ))
           )}

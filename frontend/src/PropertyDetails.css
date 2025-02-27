@@ -1,0 +1,14 @@
+.property-details{
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+.property-details .left{
+    width: 30%;
+    border: 1px solid red;
+}
+.property-details .right{
+    width: 70%;
+    border: 1px solid red;
+}
