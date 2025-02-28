@@ -353,7 +353,7 @@ const PropertyList = () => {
           ) : (
             properties.map((property, i) => (
               // <div key={property._id} style={{ viewTransitionName: `property-${property._id}` }}>
-              <Link to={property.property_name}>
+              <Link to={property._id}>
                 <PropertyCard
                   key={property._id}
                   id={property._id}

@@ -38,21 +38,22 @@ const iconMap = {
 
 const PropertyDetails = () => {
   const params = useParams();
-  const [features, setFeautres] = useState([])
+  const id = params.id;
+  const [propertyDetails, setPropertyDetails] = useState({})
 
   useEffect(() => {
     const fetchProperty = async () =>{
       try{
-        const response = await axiosInstance.get(
-          `/api/properties?${params.toString()}`
+        const response = await axiosInstance.get(`/api/properties/${id}`
         );
-        console.log("heasdfasdfasd");
+        console.log("heasdfasdfasd", response);
+        setPropertyDetails(response.data);
       }catch(e){
         console.error(`Error fetching ${params.name} property details`, e);
       }
     }
     fetchProperty();
-  },[params])
+  },[])
 
   return (
     <div className="property-details">
@@ -98,21 +99,21 @@ const PropertyDetails = () => {
       <div className="right">
         <div className="property">
           <div className="image">
-            <img src={PropertyImage} alt="propery image" />
+            <img src={`http://localhost:8000/property-images/${propertyDetails.property_image}`} alt="propery image" />
           </div>
           <div className="header">
             <div>
-              <h3>Property Name</h3>
-              <h4>345,454,3.</h4>
+              <h3>{propertyDetails.property_name}</h3>
+              <h4>{propertyDetails.property_price}</h4>
             </div>
             <div>
               <div>
                 <p>
-                  <FontAwesomeIcon icon={faLocationDot} /> Washington, USA
+                  <FontAwesomeIcon icon={faLocationDot} /> {propertyDetails.property_city}
                 </p>
                 <p>
                   <FontAwesomeIcon icon={faHouse} />
-                  Office
+                  {propertyDetails.property_type}
                 </p>
               </div>
               <div>
@@ -125,7 +126,7 @@ const PropertyDetails = () => {
           <div className="features">
             <h3>Facility</h3>
             <div className="list">
-              {features.map((feature, index) => (
+              {propertyDetails.property_features?.map((feature, index) => (
                 <div key={index} className="feature-item">
                   <FontAwesomeIcon
                     icon={iconMap[feature]}
@@ -137,7 +138,7 @@ const PropertyDetails = () => {
           </div>
           <div className="details">
             <h3>Details & features</h3>
-            <pre>Details</pre>
+            <pre>{propertyDetails.property_details}</pre>
           </div>
         </div>
       </div>

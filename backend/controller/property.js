@@ -1,4 +1,4 @@
-const { getPropertiesStatsService, getPropertiesService, createPropertyService} = require("../services/property.service");
+const { getPropertiesStatsService, getPropertiesService, createPropertyService, getPropertyService} = require("../services/property.service");
 
 const postProperty = async (req, res, next) => {
   if (
@@ -91,8 +91,23 @@ const getPropertiesStats = async (req,res,next) =>{
     
   }
 }
+
+const getPropertyDetails = async (req,res,next) =>{
+  try{
+    const id= req.params.id;
+    // const parsedId = parseInt(id);
+    // console.log(parsedId, "proeprty id");
+    
+    const propertyDetails = await getPropertyService(id);
+    return res.status(200).json(propertyDetails);
+  }catch(e){
+    console.error(e.message);
+    return res.status(500).json({message: e.message})
+  }
+}
 module.exports = {
   postProperty,
   getProperties,
-  getPropertiesStats
+  getPropertiesStats,
+  getPropertyDetails
 };

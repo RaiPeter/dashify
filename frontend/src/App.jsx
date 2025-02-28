@@ -40,7 +40,7 @@ function App() {
           <Route path="properties" element={<Properties />} >
             <Route index element={<PropertyList />}/>
             <Route path="add-property" element={<AddProperty />} />
-            <Route path=":name" element={<PropertyDetails />} />
+            <Route path=":id" element={<PropertyDetails />} />
           </Route>
           <Route path="agents" element={<Agents />} />
           <Route path="customers" element={<Customers />} />
