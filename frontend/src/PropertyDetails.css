@@ -1,14 +1,60 @@
-.property-details{
-    border: 1px solid;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 20px;
+.property-details {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
 }
-.property-details .left{
-    width: 30%;
-    border: 1px solid red;
+.property-details .left {
+  width: 30%;
+  border: 1px solid red;
 }
-.property-details .right{
-    width: 70%;
-    border: 1px solid red;
+.property-details .right {
+  width: 70%;
+  border: 1px solid red;
+}
+.property-details .left .agent > :first-child {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.property-details .left .agent > :first-child label {
+  font-size: 1.2em;
+}
+.property-details .left .agent .image {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+.property-details .left .agent .image img {
+  object-fit: cover;
+  height: 100%;
+}
+.property-details .left .agent .name {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.property-details .left .agent .name p {
+  font-size: 1.2em;
+}
+.property-details .left .agent .details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  line-height: 1.1em;
+  /* margin-top: 5px; */
+}
+.property-details .left .agent .details > div {
+  display: flex;
+  align-items: center;
+}
+.property-details .left .agent .details > div :first-child {
+  margin-right: 10px;
+}
+
+.property-details .left .agent .details > p {
+  margin-left: 25px;
 }
