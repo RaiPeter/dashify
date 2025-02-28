@@ -46,6 +46,10 @@ const getLastMonthProperties = async () => {
     },
   });
 };
+
+const getPropertyDetails = async (id) => {
+  return await Property.findById(id)
+}
 module.exports = {
   createProperty,
   getProperties,
@@ -54,4 +58,5 @@ module.exports = {
   getSoldProperties,
   getIncomeFromSoldProperties,
   getLastMonthProperties,
+  getPropertyDetails
 };

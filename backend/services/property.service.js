@@ -6,6 +6,7 @@ const {
   getSoldProperties,
   getIncomeFromSoldProperties,
   getLastMonthProperties,
+  getPropertyDetails,
 } = require("../db/property-db");
 
 const createPropertyService = async (data) => {
@@ -53,8 +54,21 @@ const getPropertiesStatsService = async () => {
   }
 };
 
+const getPropertyService = async(id) =>{
+  try{
+    const propertyDetails = await getPropertyDetails(id);
+    console.log(propertyDetails,"details");
+    
+    return propertyDetails;
+  }catch(e){
+    console.error("Error fetching property details");
+    throw e;
+  }
+}
+
 module.exports = {
   createPropertyService,
   getPropertiesService,
   getPropertiesStatsService,
+  getPropertyService
 };

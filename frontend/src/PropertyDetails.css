@@ -1,0 +1,132 @@
+.property-details {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
+}
+.property-details .left {
+  width: 30%;
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 10px;
+}
+.property-details .right {
+  width: 70%;
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 10px
+}
+.property-details .left .agent > :first-child {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.property-details .left .agent > :first-child label {
+  font-size: 1.2em;
+}
+.property-details .left .agent .image {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+.property-details .left .agent .image img {
+  object-fit: cover;
+  height: 100%;
+}
+.property-details .left .agent .name {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.property-details .left .agent .name p {
+  font-size: 1.2em;
+}
+.property-details .left .agent .details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  line-height: 1.1em;
+  /* margin-top: 5px; */
+}
+.property-details .left .agent .details > div {
+  display: flex;
+  align-items: center;
+}
+.property-details .left .agent .details > div :first-child {
+  margin-right: 10px;
+}
+
+.property-details .left .agent .details > p {
+  margin-left: 25px;
+}
+.property-details .right .property{
+    /* border: 2px solid rgb(205, 205, 205); */
+}
+.property-details .right .property .image{
+    height: 250px;
+    /* border: 1px solid green; */
+}
+.property-details .right .property .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+
+}
+.property-details .right .property .header{
+    padding: 10px;
+}
+.property-details .right .property .header > :first-child{
+    display: flex;
+    justify-content: space-between;
+}
+.property-details .right .property .header > :first-child > h4{
+    color: rgba(254, 98, 59, 1);
+}
+
+.property-details .right .property .header > :nth-child(2){
+    display: flex;
+    justify-content: space-between;
+}
+.property-details .right .property .header > :nth-child(2) > div{
+    display: flex;
+    margin-top: 10px;
+}
+.property-details .right .property .header > :nth-child(2) > div p{
+    margin-right: 30px;;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+    align-items: center;
+}   
+.property-details .right .property .header > :nth-child(2) > div button{
+    padding: 5px 7px;
+    /* outline: none; */
+    background-color: rgb(233, 233, 233);
+    border: none;
+    cursor: pointer;
+}
+.property-details .right .property .features{
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 98%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 250px;
+    /* overflow-y: scroll; */
+}
+.property-details .right .property .features .list{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+}
+.property-details .right .property .features .list .feature-item{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.property-details .right .property .details{
+    padding: 10px;
+    margin-top: 5px;
+}
