@@ -58,3 +58,73 @@
 .property-details .left .agent .details > p {
   margin-left: 25px;
 }
+.property-details .right .property{
+    border: 2px solid blue;
+}
+.property-details .right .property .image{
+    height: 250px;
+    border: 1px solid green;
+}
+.property-details .right .property .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+
+}
+.property-details .right .property .header{
+    padding: 10px;
+}
+.property-details .right .property .header > :first-child{
+    display: flex;
+    justify-content: space-between;
+}
+.property-details .right .property .header > :first-child > h4{
+    color: rgba(254, 98, 59, 1);
+}
+
+.property-details .right .property .header > :nth-child(2){
+    display: flex;
+    justify-content: space-between;
+}
+.property-details .right .property .header > :nth-child(2) > div{
+    display: flex;
+    margin-top: 10px;
+}
+.property-details .right .property .header > :nth-child(2) > div p{
+    margin-right: 30px;;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+    align-items: center;
+}   
+.property-details .right .property .header > :nth-child(2) > div button{
+    padding: 5px 7px;
+    /* outline: none; */
+    background-color: rgb(233, 233, 233);
+    border: none;
+    cursor: pointer;
+}
+.property-details .right .property .features{
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 98%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 250px;
+    /* overflow-y: scroll; */
+}
+.property-details .right .property .features .list{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+}
+.property-details .right .property .features .list .feature-item{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.property-details .right .property .details{
+    padding: 10px;
+    margin-top: 5px;
+}
