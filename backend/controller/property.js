@@ -40,7 +40,7 @@ const getProperties = async (req,res, next) =>{
 
     if (city) filter.property_city = city;
     if (type) filter.property_type = { $in: type.split(",") };
-    if (features) filter.property_features = { $all: features.split(",") };
+    if (features) filter.property_features = { $in: features.split(",") };
     if (style) filter.property_style = { $in: style.split(",") };
     if (minSize || maxSize) {
       filter.size = {};
