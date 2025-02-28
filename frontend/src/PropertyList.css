@@ -20,13 +20,12 @@
   
   .property-list .row .right {
     width: 75%;
-    border: 1px solid green;
-    display: flex;
-    flex-wrap: wrap;
+    border: 1px solid rgb(190, 190, 190);
+    display: grid;
+    border-radius: 10px;
     padding:10px;
-    row-gap: 10px;
-    column-gap: 10px;
-    flex:  1 1 250px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
   }
   .property-list > :first-child {
       /* background-color: lightyellow; */
@@ -131,6 +130,12 @@
     -moz-appearance: textfield;
   }
   
+.property-list .right a{
+  text-decoration: none;
+  color: unset;
+  /* width: 260px; */
+}
 
-
-  
+.property-list .right a:hover img{
+  opacity: 0.9;
+}
