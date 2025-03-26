@@ -22,6 +22,7 @@ import {
 import { useParams } from "react-router";
 import PropertyImage from "./assets/sdvsr.webp";
 import axiosInstance from "./interceptor/interceptor";
+import amountFormatter from "./features/utils/amountFormatter";
 
 const iconMap = {
   Clubhouse :  faKaaba,
@@ -49,7 +50,7 @@ const PropertyDetails = () => {
         console.log("heasdfasdfasd", response);
         setPropertyDetails(response.data);
       }catch(e){
-        console.error(`Error fetching ${params.name} property details`, e);
+        console.error(`Error fetching ${params.id} property details`, e);
       }
     }
     fetchProperty();
@@ -104,7 +105,7 @@ const PropertyDetails = () => {
           <div className="header">
             <div>
               <h3>{propertyDetails.property_name}</h3>
-              <h4>{propertyDetails.property_price}</h4>
+              <h4>{amountFormatter(propertyDetails.property_price)}</h4>
             </div>
             <div>
               <div>
@@ -138,7 +139,7 @@ const PropertyDetails = () => {
           </div>
           <div className="details">
             <h3>Details & features</h3>
-            <pre>{propertyDetails.property_details}</pre>
+            <p>{propertyDetails.property_details}</p>
           </div>
         </div>
       </div>

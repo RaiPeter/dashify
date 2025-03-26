@@ -1,5 +1,5 @@
 .card{
-    width: 270px;
+    width: calc((340 / 16) * 1em);
     /* height: 180px; */
     border: 1px solid rgba(128, 128, 136, 1);
     /* padding: 10px; */
