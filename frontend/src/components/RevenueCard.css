@@ -1,5 +1,5 @@
 .revenue-card{
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     width: 35%;
     /* max-height: 300px; */
     padding: 10px;

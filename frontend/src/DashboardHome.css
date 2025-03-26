@@ -1,6 +1,6 @@
-/* .dashboard-layout{
-   border: 1px solid red;
-} */
+.dashboard-layout{
+   padding: 10px;
+}
 .dashboard-layout .dashboard-cards{
     display: flex;
     justify-content: space-between;
@@ -14,6 +14,6 @@
 
 .dashboard-layout .dashboard-table{
     margin-top: 20px;
-    border: 1px solid gainsboro;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
 }

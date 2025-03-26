@@ -15,6 +15,9 @@ import NavMenu from "./components/NavMenu";
 import SearchInput from "./components/SearchInput";
 import axiosInstance from "./interceptor/interceptor";
 import { logoutAndClearSession } from "./features/slices/authSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
+
 
 const navMenu = [
   {
@@ -92,11 +95,11 @@ export function Dashboard() {
             <SearchInput />
           </div>
           <div className="right-menu">
-            <div>icons</div>
+            <div><FontAwesomeIcon icon={faBell} /></div>
+            <div>Peter Rai</div>
             <button onClick={handleLogout} className="logout-button">
               Logout
             </button>
-            <div>user</div>
           </div>
         </div>
         <div className="outlet-page">

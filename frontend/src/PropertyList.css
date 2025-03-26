@@ -1,6 +1,5 @@
 .property-list {
     /* border: 1px solid green; */
-    padding: 10px;
     position: relative;
   }
   .property-list .row {
@@ -41,7 +40,7 @@
   }
   .property-list .row .filter-row{
       margin-top: 10px;
-      /* border: 1px solid green;     */
+      margin-bottom: 10px;
   }
   .property-list .row .filter-row select{
       width: 100%;
@@ -61,12 +60,10 @@
       /* Green color */
   }
   .property-list .row .filter-row .checkbox-group .checkbox-label{
-      /* border: 1px solid red; */
       display: block;
-      width: 30%;
       display: flex;
       align-items: center;
-      /* margin-bottom: 10px; */
+      column-gap: 2px;
   }
   .property-list .row .filter-row .checkbox-group .checkbox-label input{
       margin-right: 2px;
@@ -138,4 +135,20 @@
 
 .property-list .right a:hover img{
   opacity: 0.9;
+}
+.property-list .row .left button{
+  height: 2em;
+  background: var(--primary-color);
+  border: none;
+  outline: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.property-list .row .left button:hover{
+  color: var(--primary-color);
+  background: unset;
+  border: 1px solid var(--primary-color);
 }
