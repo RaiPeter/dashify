@@ -1,8 +1,9 @@
 import React from "react";
 import "./Card.css";
 import PropertyIcons from "../../src/assets/property1.png"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
-const Card = ({name, amount, update,imgSrc}) => {
+const Card = ({name, amount, update,icon}) => {
   return (
     <div className="card">
       <div className="card-top">
@@ -11,7 +12,7 @@ const Card = ({name, amount, update,imgSrc}) => {
           <h3>{amount}</h3>
         </div>
         <div className="card-icon">
-          <img src={imgSrc} alt="img"/>
+          <FontAwesomeIcon icon={icon}/>
         </div>
       </div>
       <div className="card-bottom">

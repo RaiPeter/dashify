@@ -5,11 +5,51 @@
   --text-color-hover: rgb(0, 0, 0);
   --background-color: rgb(233, 233, 233);
   --border-color: rgb(200, 200, 200);
+  --background: rgb(255, 255, 255);
   --card-bottom-background-color : rgb(245 245 245);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: rgba(254, 98, 59, 1);
+  --text-color: rgb(255, 255, 255);
+  --text-color-hover: rgb(180, 180, 180);
+  --background-color: rgb(94 94 94);
+  --border-color: rgb(49 49, 49);
+  --background : rgb(21, 21, 21);
+  --card-bottom-background-color: rgb(18, 18, 18);
+  }
+}
+html {
+  color-scheme: dark light;
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --primary-color: rgba(254, 98, 59, 1);
+  --text-color: rgb(100, 100, 100);
+  --text-color-hover: rgb(0, 0, 0);
+  --background-color: rgb(233, 233, 233);
+  --border-color: rgb(77 76 76);
+  --background: rgb(255, 255, 255);
+  --card-bottom-background-color : rgb(245 245 245);
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --primary-color: rgba(254, 98, 59, 1);
+  --text-color: rgb(180, 180, 180);
+  --text-color-hover: rgb(255, 255, 255);
+  --background-color: rgb(94 94 94);
+  --border-color: rgb(77 76 76);
+  --background : rgb(21, 21, 21);
+  --card-bottom-background-color: rgb(18, 18, 18);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+body {
+  background: var(--background);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

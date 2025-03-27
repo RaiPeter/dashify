@@ -37,7 +37,7 @@ axiosInstance.interceptors.response.use(
                 console.log("Refresh Token Success:", data);
 
                 if (data) {
-                    store.dispatch(loginUser({ user: data.user }));
+                    store.dispatch(loginUser(data.user));
                 }
                  
                 return axiosInstance(originalRequest);

@@ -7,6 +7,8 @@ import RevenueIcon from "./assets/revenue.png"
 import StackedBarChart from "./components/StackedBarChart";
 import RevenueCard from "./components/RevenueCard";
 import Table from "./components/Table";
+import { faBuildingColumns, faUser, faUsers, faChartSimple } from "@fortawesome/free-solid-svg-icons"
+
 const data = [
     {
       id: 1,
@@ -99,18 +101,16 @@ const data = [
       price: '2,750,630'
     }
   ];
-    
-
 
 export default function DashboardHome(){
 
     return (
         <div className="dashboard-layout">
             <div className="dashboard-cards">
-                <Card name="No. of properties" amount="5467" update="-3.27" imgSrc={PropertyIcon}/>
-                <Card name="Regi. Agents" amount="607" update="+5.53" imgSrc={AgentIcon}/>
-                <Card name="Customers" amount="5467" update="-2.33" imgSrc={CustomersIcon}/>
-                <Card name="Revenue" amount="5467" update="+4.25" imgSrc={RevenueIcon}/>
+                <Card name="No. of properties" amount="5467" update="-3.27" icon={faBuildingColumns}/>
+                <Card name="Regi. Agents" amount="607" update="+5.53" icon={faUser}/>
+                <Card name="Customers" amount="5467" update="-2.33" icon={faUsers}/>
+                <Card name="Revenue" amount="5467" update="+4.25" icon={faChartSimple}/>
             </div>
             <div className="dashboard-chart">
                 <StackedBarChart/>

@@ -33,7 +33,7 @@ export const verifyAuth = () => async (dispatch) => {
   try {
     const { data } = await axiosInstance.post("/auth/verify-token");
     console.log("Verification successful:", data);
-    dispatch(loginUser({ user: data.user}));
+    dispatch(loginUser(data.user));
   } catch (error) {
     console.error("Verification failed. Trying refresh:", error);
     dispatch(refreshTokenAndRetry());

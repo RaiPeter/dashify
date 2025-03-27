@@ -10,7 +10,7 @@ const NavMenu = ({ navMenu }) => {
       key={i}
       className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
     >
-      <img src={navMenu.img} />
+      {navMenu.icon}
       {navMenu.name}
     </NavLink>
   ));

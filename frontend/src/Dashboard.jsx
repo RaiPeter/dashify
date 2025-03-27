@@ -1,70 +1,67 @@
-import { Link, Route, Outlet, NavLink, useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import "./Dashboard.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DashifyLogo from "./assets/Dashify-logo.png";
-// import { New } from "./new";
-import AppIcon from "./assets/apps.png";
-import PropertyIcon from "./assets/property.png";
-import AgentIcon from "./assets/agents.png";
-import CustomersIcon from "./assets/customers.png";
-import OrdersIcon from "./assets/orders.png";
-import TransactionsIcon from "./assets/transactions.png";
-import InboxIcon from "./assets/inbox.png";
-import PostIcon from "./assets/post.png";
 import NavMenu from "./components/NavMenu";
 import SearchInput from "./components/SearchInput";
 import axiosInstance from "./interceptor/interceptor";
 import { logoutAndClearSession } from "./features/slices/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun, faDesktop, faTableCellsLarge, faBuilding, faUser, faUsers, faBox, faFileInvoice} from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 
 const navMenu = [
   {
     name: "Dashboard",
-    img: AppIcon,
+    icon: <FontAwesomeIcon icon={faTableCellsLarge}/>,
     link: "/dashboard",
   },
   {
     name: "Properties",
-    img: PropertyIcon,
+    icon: <FontAwesomeIcon icon={faBuilding}/>,
     link: "/dashboard/properties",
   },
   {
     name: "Agents",
-    img: AgentIcon,
+    icon: <FontAwesomeIcon icon={faUser}/>,
     link: "/dashboard/agents",
   },
   {
     name: "Customers",
-    img: CustomersIcon,
+    icon: <FontAwesomeIcon icon={faUsers}/>,
     link: "/dashboard/customers",
   },
   {
     name: "Orders",
-    img: OrdersIcon,
+    icon: <FontAwesomeIcon icon={faBox}/>,
     link: "/dashboard/orders",
-  },
-  {
-    name: "Transactions",
-    img: TransactionsIcon,
-    link: "/dashboard/transactions",
-  },
-  {
-    name: "Inbox",
-    img: InboxIcon,
-    link: "/dashboard/inbox",
-  },
-  {
-    name: "Post",
-    img: PostIcon,
-    link: "/dashboard/post",
-  },
+  }
 ];
 
 export function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const currentUser = useSelector((state) => state?.auth?.user?.email) || "No user"
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme || "system";
+  });
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (theme === "light") {
+      html.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    } else if (theme === "dark") {
+      html.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.removeAttribute("data-theme");
+      localStorage.setItem("theme", "system");
+    }
+  }, [theme]);
   
   const handleLogout = async () => {
     try {
@@ -74,6 +71,15 @@ export function Dashboard() {
     } catch (error) {
       console.error("Logout failed:", error);
     }
+  };
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+    setDropdownOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen((prev) => !prev);
   };
 
   return (
@@ -95,11 +101,24 @@ export function Dashboard() {
             <SearchInput />
           </div>
           <div className="right-menu">
-            <div><FontAwesomeIcon icon={faBell} /></div>
-            <div>Peter Rai</div>
+            <div>{currentUser}</div>
             <button onClick={handleLogout} className="logout-button">
               Logout
             </button>
+            <div className="dropdown">
+              <button className="dropbtn" onClick={toggleDropdown}>
+                {theme === "light" && <FontAwesomeIcon icon={faSun} />}
+                {theme === "dark" && <FontAwesomeIcon icon={faMoon} />}
+                {theme === "system" && <FontAwesomeIcon icon={faDesktop} />}
+              </button>
+              {dropdownOpen && (
+                <div className="dropdown-content">
+                  <button href="#light" onClick={() => handleThemeChange("light")}>Light</button>
+                  <button href="#dark" onClick={() => handleThemeChange("dark")}>Dark</button>
+                  <button href="#system" onClick={() => handleThemeChange("system")}>System</button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="outlet-page">

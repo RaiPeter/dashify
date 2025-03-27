@@ -6,6 +6,7 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 7px;
+  align-items: center;
 }
 .search-input input {
   width: 100%;
@@ -14,6 +15,6 @@
   font-size: 1.4em;
   padding: 10px;
 }
-.search-input img {
+.search-input svg {
   object-fit: contain;
 }
