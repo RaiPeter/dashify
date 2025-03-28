@@ -17,6 +17,7 @@
     margin-top: 20px;
     border: 1px solid var(--border-color);
     border-radius: 10px;
+    margin-bottom: 30px;
 }
 @media screen and (max-width: 1023px){
     .dashboard-layout .dashboard-cards{
@@ -25,4 +26,25 @@
     }
 }
 @media screen and (max-width: 767px){
+    .dashboard-layout{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dashboard-layout .dashboard-cards{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .dashboard-layout .dashboard-chart{
+        display: flex;
+        flex-wrap: wrap-reverse;
+        width: 100%;
+    }
+    .dashboard-layout .dashboard-table{
+        width: 100%;
+    }
 }

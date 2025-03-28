@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import "./StackedBarChart.css"
 
@@ -21,7 +21,7 @@ const StackedBarChart = () => {
   const svgRef = useRef();
   const containerRef = useRef();
 
-  const drawChart = () => {
+  const drawChart = useCallback(() => {
     const containerWidth = containerRef.current.clientWidth;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     const width = containerWidth - margin.left - margin.right;
@@ -99,7 +99,7 @@ const StackedBarChart = () => {
       .duration(800)
       .attr("y", y(0))
       .attr("height", d => y(d.expenses) - y(0));
-  };
+  }, []);
 
   useEffect(() => {
     drawChart();
@@ -112,7 +112,7 @@ const StackedBarChart = () => {
     return () => {
       window.removeEventListener("resize", handleResize)
     }
-  }, []);
+  }, [drawChart]);
 
   return (
     <div ref={containerRef}  className="stackedbar" style={{ position: "relative" }}>

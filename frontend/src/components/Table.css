@@ -2,7 +2,7 @@
     /* border: 1px solid red; */
     height: 400px;
     overflow-y: scroll;
-    
+    border-radius: 10px;
 }
 .table table{
     width: 100%;
@@ -35,4 +35,29 @@ td:last-child {
 }
 .table tbody tr:nth-child(n+1):hover {
     background: #efefef;
+}
+@media screen and (max-width: 1023px){
+    .table th{
+        font-size: 1em;
+    }
+    .table tbody tr{
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .table thead{
+        position: sticky;
+        top: 0;
+        background: var(--background);
+    }
+    .table th{
+        font-size: 0.8em;
+    }
+    .table td, .table th{
+        padding: 3px 5px;
+    }
+    .table tbody tr{
+        font-size: 0.7em;
+    }
 }

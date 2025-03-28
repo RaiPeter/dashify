@@ -6,7 +6,7 @@
   --background-color: rgb(233, 233, 233);
   --border-color: rgb(200, 200, 200);
   --background: rgb(255, 255, 255);
-  --card-bottom-background-color : rgb(245 245 245);
+  --card-bottom-background-color : rgb(245, 245, 245);
   --max-width: 1450px;
 }
 @media (prefers-color-scheme: dark) {
@@ -14,8 +14,8 @@
     --primary-color: rgba(254, 98, 59, 1);
   --text-color: rgb(255, 255, 255);
   --text-color-hover: rgb(180, 180, 180);
-  --background-color: rgb(94 94 94);
-  --border-color: rgb(49 49, 49);
+  --background-color: rgb(94, 94, 94);
+  --border-color: rgb(49, 49, 49);
   --background : rgb(21, 21, 21);
   --card-bottom-background-color: rgb(18, 18, 18);
   --max-width: 1450px;
@@ -30,9 +30,9 @@ html {
   --text-color: rgb(100, 100, 100);
   --text-color-hover: rgb(0, 0, 0);
   --background-color: rgb(233, 233, 233);
-  --border-color: rgb(77 76 76);
+  --border-color: rgb(200, 200, 200);
   --background: rgb(255, 255, 255);
-  --card-bottom-background-color : rgb(245 245 245);
+  --card-bottom-background-color : rgb(245, 245, 245);
   --max-width: 1450px;
 }
 [data-theme="dark"] {
@@ -40,8 +40,8 @@ html {
   --primary-color: rgba(254, 98, 59, 1);
   --text-color: rgb(180, 180, 180);
   --text-color-hover: rgb(255, 255, 255);
-  --background-color: rgb(94 94 94);
-  --border-color: rgb(77 76 76);
+  --background-color: rgb(94, 94, 94);
+  --border-color: rgb(49, 49, 49);
   --background : rgb(21, 21, 21);
   --card-bottom-background-color: rgb(18, 18, 18);
   --max-width: 1450px;

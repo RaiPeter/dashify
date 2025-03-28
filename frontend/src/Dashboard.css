@@ -141,6 +141,6 @@
 }
 @media screen and (max-width: 767px){
   .right-side .outlet-page {
-    max-width: 550px;
+    width: 100%;
   }
 }

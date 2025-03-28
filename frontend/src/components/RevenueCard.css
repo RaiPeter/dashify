@@ -134,5 +134,18 @@
     .revenue-card .revenue-progress .revenue-progress-details .revenue-progress-update{
         font-size: 0.8em;
     }
+}
 
+@media screen and (max-width: 767px) {
+    .revenue-card{
+        width: 100%;
+    }
+    .revenue-card .revenue-small-cards{
+        flex-wrap: unset;
+        margin-top: 10px;
+    }
+    .revenue-card .revenue-progress .revenue-progress-details .revenue-progress-update{
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
 }
