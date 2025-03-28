@@ -42,7 +42,7 @@ const navMenu = [
 export function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentUser = useSelector((state) => state?.auth?.user?.email) || "No user"
+  const currentUser = useSelector((state) => state?.auth?.user?.email);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");

@@ -19,43 +19,43 @@ const data = [
 
 const StackedBarChart = () => {
   const svgRef = useRef();
+  const containerRef = useRef();
 
-  useEffect(() => {
+  const drawChart = () => {
+    const containerWidth = containerRef.current.clientWidth;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
-    const width = 750 - margin.left - margin.right;
+    const width = containerWidth - margin.left - margin.right;
     const height = 300 - margin.top - margin.bottom;
+
+    d3.select(svgRef.current).selectAll("*").remove();
 
     const svg = d3
       .select(svgRef.current)
-      .attr("width", "100%")
+      .attr("width", containerWidth)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Scales
-    const x = d3.scaleBand().domain(data.map(d => d.month)).range([0, width]).padding(0.3);
+    const x = d3.scaleBand().domain(data.map(d => d.month)).range([0,width]).padding(0.3);
     const y = d3
       .scaleLinear()
       .domain([d3.min(data, d => d.expenses), d3.max(data, d => d.income)])
       .nice()
       .range([height, 0]);
 
-    const color = d3.scaleOrdinal().domain(["income", "expenses"]).range(["#66c2a5", "#fc8d62"]);
+    const color = d3.scaleOrdinal().domain(["income","expenses"]).range(["#66c2a5", "#fc8d62"]);
 
     // Axes
     svg.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x));
     svg.append("g").call(d3.axisLeft(y));
 
-    // Tooltip
     const tooltip = d3.select("body").append("div")
       .style("position", "absolute")
-      // .style("background", "white")
       .style("padding", "8px")
       .style("border-radius", "4px")
       .style("box-shadow", "0px 0px 5px rgba(0,0,0,0.3)")
-      .style("display", "none");
+      .style("display","none");
 
-    // Bars with animation and tooltips
     svg.selectAll(".bar.income")
       .data(data)
       .enter()
@@ -67,7 +67,7 @@ const StackedBarChart = () => {
       .attr("width", x.bandwidth())
       .attr("fill", color("income"))
       .on("mouseover", (event, d) => {
-        tooltip.style("display", "block").html(`<strong>${d.month}</strong><br>Income: $${d.income}`);
+        tooltip.style("display", "block").html(`<strong>${d.month}</strong><br>Income: ${d.income}`);
       })
       .on("mousemove", (event) => {
         tooltip.style("left", event.pageX + 10 + "px").style("top", event.pageY - 20 + "px");
@@ -78,7 +78,7 @@ const StackedBarChart = () => {
       .attr("y", d => y(d.income))
       .attr("height", d => y(0) - y(d.income));
 
-    svg.selectAll(".bar.expenses")
+      svg.selectAll(".bar.expenses")
       .data(data)
       .enter()
       .append("rect")
@@ -99,10 +99,23 @@ const StackedBarChart = () => {
       .duration(800)
       .attr("y", y(0))
       .attr("height", d => y(d.expenses) - y(0));
+  };
+
+  useEffect(() => {
+    drawChart();
+
+    const handleResize = () => {
+      drawChart();
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
   }, []);
 
   return (
-    <div className="stackedbar" style={{ position: "relative" }}>
+    <div ref={containerRef}  className="stackedbar" style={{ position: "relative" }}>
       <h4>Income analytics</h4>
       <svg ref={svgRef}></svg>
     </div>

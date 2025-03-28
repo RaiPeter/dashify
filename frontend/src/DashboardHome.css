@@ -10,10 +10,19 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    column-gap: 10px;
 }
 
 .dashboard-layout .dashboard-table{
     margin-top: 20px;
     border: 1px solid var(--border-color);
     border-radius: 10px;
+}
+@media screen and (max-width: 1023px){
+    .dashboard-layout .dashboard-cards{
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+}
+@media screen and (max-width: 767px){
 }

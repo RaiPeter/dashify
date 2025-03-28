@@ -1,5 +1,5 @@
 .card {
-  width: calc((340 / 16) * 1em);
+  width: 20em;
   border: 1px solid var(--border-color);
   border-radius: 10px;
 }
@@ -38,4 +38,26 @@
 .card .card-bottom h4 {
   color: var(--primary-color);
 }
-
+@media screen and (max-width: 1023px){
+  .card {
+    width: 11.5em;
+  }
+  .card .card-top .card-name p{
+    font-size: 0.9em;
+  }
+  .card .card-top .card-name h3{
+    font-size: 1.2em;
+  }
+  .card .card-top{
+    padding: 5px;
+  }
+  .card .card-bottom{
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 767px){
+  .card {
+    width: 5em;
+    background-color: red;
+  }
+}
