@@ -11,7 +11,8 @@ const NavMenu = ({ navMenu }) => {
       className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
     >
       {navMenu.icon}
-      {navMenu.name}
+      <span>{navMenu.name}</span>
+      
     </NavLink>
   ));
 };

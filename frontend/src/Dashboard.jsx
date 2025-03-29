@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate, NavLink} from "react-router";
 import "./Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import DashifyLogo from "./assets/Dashify-logo.png";
@@ -7,7 +7,7 @@ import SearchInput from "./components/SearchInput";
 import axiosInstance from "./interceptor/interceptor";
 import { logoutAndClearSession } from "./features/slices/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
-import { faMoon, faSun, faDesktop, faTableCellsLarge, faBuilding, faUser, faUsers, faBox, faFileInvoice} from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun, faDesktop, faRightFromBracket, faTableCellsLarge, faBuilding, faUser, faUsers, faBox, faFileInvoice} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 
@@ -42,7 +42,7 @@ const navMenu = [
 export function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentUser = useSelector((state) => state?.auth?.user?.email);
+  const currentUser = useSelector((state) => state?.auth?.user?.username);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -85,26 +85,27 @@ export function Dashboard() {
   return (
     <div className="sidebars">
       <title>Dashboard : Home</title>
-      <div className="sidebar">
-        <div className="company-logo">
-          <img src={DashifyLogo} />
-        </div>
-
+      <div className="sidebar" onClick={() => setIsOpen(false)}>
         <div className="dashboard-links">
           <NavMenu navMenu={navMenu} />
+        </div>
+        <div className="dashboard-profile">
+          <button title="Logout" onClick={handleLogout}> 
+            {currentUser}
+            <FontAwesomeIcon icon={faRightFromBracket} />
+          </button>
         </div>
       </div>
 
       <div className="right-side">
         <div className="top-nav">
+        <div className="company-logo">
+          <img src={DashifyLogo} />
+        </div>
           <div className="left-menu">
             <SearchInput />
           </div>
           <div className="right-menu">
-            <div>{currentUser}</div>
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
             <div className="dropdown">
               <button className="dropbtn" onClick={toggleDropdown}>
                 {theme === "light" && <FontAwesomeIcon icon={faSun} />}

@@ -24,3 +24,15 @@
   background: var(--background-color);
   font-weight: 500;
 }
+@media screen and (max-width: 767px){
+  .nav-link svg{
+    font-size: 1.3em;
+    margin-right: 0px;
+  }
+  .nav-link span{
+    display: none;
+  }
+  .nav-link{
+    justify-content: center;
+  }
+}
