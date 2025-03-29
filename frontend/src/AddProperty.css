@@ -12,11 +12,19 @@
     display: flex;
     flex-direction: column;
 }
-.property-row .property-field input{
-    min-width: 290px;
+
+.property-row .property-field > label{
+    color: var(--text-color-hover);
+}
+.property-row .property-field-textarea > label{
+    color: var(--text-color-hover);
+}
+.property-row .property-field > input{
+    max-width: 290px;
+    width: 270px;
     outline: none;
     font-size: 1.1em ;
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 5px;
     margin-top: 5px;
@@ -26,7 +34,7 @@
     min-width: 200px;
     outline: none;
     font-size: 1.1em ;
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 5px;
     margin-top: 5px;
@@ -34,6 +42,7 @@
 .property-row .property-field .features{
     display: flex;
     flex-wrap: wrap;
+    row-gap: 5px;
 }
 
 .property-row .property-field .features label{
@@ -55,7 +64,7 @@
 .property-row .property-field-textarea textarea{ 
     outline: none;
     font-size: 1.3em;
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 5px;
     margin-top: 5px;
@@ -69,17 +78,17 @@
 }
 .buttons button {
     outline: none;
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
     font-size: 1.1em;
     margin-left: 10px;
 }
 .buttons .cancel{
-    background-color: white;
-    color: black;
+    background-color: var(--text-color-hover);
+    color: var(--background);
 }
 .buttons .submit{
-    background-color: rgba(254, 98, 59, 1);
+    background-color: var(--primary-color);
     color: white;
 }

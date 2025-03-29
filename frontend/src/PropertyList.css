@@ -9,26 +9,34 @@
   }
   .property-list .row .left {
     width: 25%;
-    border: 1px solid rgb(205, 205, 205);
+    border: 1px solid var(--border-color);
     padding: 10px;
     border-radius: 10px;
     position: sticky;
     height: 90vh;
     top: 20px;
+    color: var(--text-color-hover);
   }
   
   .property-list .row .right {
     width: 75%;
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid var(--border-color);
     display: grid;
     border-radius: 10px;
     padding:10px;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, 250px);
+    row-gap: 15px;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: fit-content;
+    min-height: 90vh;
+    color: var(--text-color-hover);
   }
   .property-list > :first-child {
       /* background-color: lightyellow; */
       margin-bottom: 10px;
+      display: flex;
+      flex-wrap: wrap;
   }
   .property-list .row:nth-of-type(2) {
       margin-bottom: 20px;
@@ -130,7 +138,7 @@
 .property-list .right a{
   text-decoration: none;
   color: unset;
-  /* width: 260px; */
+  width: 250px;
 }
 
 .property-list .right a:hover img{
@@ -151,4 +159,13 @@
   color: var(--primary-color);
   background: unset;
   border: 1px solid var(--primary-color);
+}
+@media screen and (max-width: 1023px){
+  .property-list .row .left {
+    width: 35%;
+  }
+  .property-list .row .right {
+    width: 65%;
+    grid-template-columns: 1fr 1fr;
+  }
 }

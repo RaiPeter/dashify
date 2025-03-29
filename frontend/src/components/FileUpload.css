@@ -13,12 +13,12 @@
     align-items: center;
     width: 100%;
     height: 200px;
-    border: 2px dashed #ccc;
+    border: 2px dashed var(--border-color);
     border-radius: 10px;
     text-align: center;
     /* padding: 20px; */
     cursor: pointer;
-    background-color: #f9f9f9;
+    background-color: var(--background-color);
     transition: 0.3s;
   }
   
@@ -29,7 +29,7 @@
   
   .drop-area p {
     font-size: 1.3em;
-    color: #555;
+    color: var(--text-color-hover);
   }
   
   .drop-area span {

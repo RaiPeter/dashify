@@ -109,7 +109,7 @@
 }
 .right-side .outlet-page {
   margin-top: 10px;
-  min-width: var(--max-width);
+  max-width: var(--max-width);
 }
 .top-nav .right-menu .dropdown .dropbtn {
   background-color: var(--background-color);
